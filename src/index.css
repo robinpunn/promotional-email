@@ -22,7 +22,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -67,8 +67,9 @@ button:focus-visible {
 
 @media screen and (max-width: 20rem) {
   body {
-    height: 18rem;
-    width: 18rem;
+    height: 20rem;
+    width: 20rem;
     padding: 0;
+    margin: 0;
   }
 }

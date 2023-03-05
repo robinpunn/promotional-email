@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
+import PreCount from "./PreCount";
+import RandomSquare from "./RandomSquare";
 import "./ChessBoard.css";
 
-function ChessBoard({ setBoard }) {
+function ChessBoard({ setBoard, preCountDown, id }) {
   const boardRef = useRef(null);
 
   useEffect(() => {
@@ -9,7 +11,7 @@ function ChessBoard({ setBoard }) {
   }, [setBoard]);
 
   return (
-    <table ref={boardRef}>
+    <table className="board" ref={boardRef}>
       <tbody>
         {[...Array(8)].map((_, i) => (
           <tr key={i}>
@@ -40,6 +42,8 @@ function ChessBoard({ setBoard }) {
           </tr>
         ))}
       </tbody>
+      {preCountDown > 0 && <PreCount time={preCountDown} />}
+      <RandomSquare id={id} />
     </table>
   );
 }
