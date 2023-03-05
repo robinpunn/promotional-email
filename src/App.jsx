@@ -9,12 +9,13 @@ import Timer from "./components/Timer";
 function App() {
   const [board, setBoard] = useState(null);
   const [id, setId] = useState(null);
-  const [countDown, setCountDown] = useState("");
+  const [countDown, setCountDown] = useState("0:00");
   const [preCountDown, setPreCountDown] = useState("");
   const [countDownStart, setCountDownStart] = useState(false);
 
   useEffect(() => {
     let interval = null;
+
     if (countDownStart) {
       if (preCountDown > 0) {
         interval = setInterval(() => {
@@ -23,19 +24,18 @@ function App() {
       } else if (countDown > 0) {
         interval = setInterval(() => {
           setCountDown((countDown) => countDown - 1);
-          console.log(countDown);
         }, 1000);
+      } else {
+        setCountDownStart(false);
       }
     } else {
       clearInterval(interval);
-      setCountDownStart(false);
     }
     return () => clearInterval(interval);
   }, [countDownStart, countDown, preCountDown]);
 
   /*start timer function*/
   const handleStart = () => {
-    /*set gameTime to 30*/
     setCountDownStart(true);
     setPreCountDown(3);
     setCountDown(30);
@@ -46,8 +46,10 @@ function App() {
       <div className="board-container">
         <ChessBoard setBoard={setBoard} preCountDown={preCountDown} id={id} />
       </div>
-      <Start handleStart={handleStart} countDownStart={countDownStart} />
-      {countDown > 0 && preCountDown === 0 && <Timer time={countDown} />}
+      <div className="other-container">
+        <Timer time={countDown} />
+        <Start handleStart={handleStart} disabled={countDownStart} />
+      </div>
     </div>
   );
 }

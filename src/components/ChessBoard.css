@@ -45,6 +45,10 @@
 }
 
 @media screen and (min-width: 40rem) {
+  .boared {
+    width: 100%;
+    height: 100%;
+  }
   .white {
     width: 80x;
     height: 80px;

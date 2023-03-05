@@ -1,12 +1,10 @@
 import React from "react";
 
-function Start({ handleStart, countDownStart }) {
+function Start({ handleStart, disabled }) {
   return (
-    <div>
-      <button onClick={handleStart} disabled={countDownStart}>
-        Start Game
-      </button>
-    </div>
+    <button className="start" onClick={handleStart} disabled={disabled}>
+      Start Game
+    </button>
   );
 }
 
