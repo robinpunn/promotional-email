@@ -3,7 +3,6 @@ import ChessBoard from "./components/ChessBoard";
 import { getRandomSquare } from "./services/random";
 import Start from "./components/Start";
 import "./App.css";
-import PreCount from "./components/PreCount";
 import Timer from "./components/Timer";
 
 function App() {
@@ -12,7 +11,9 @@ function App() {
   const [countDown, setCountDown] = useState("0:00");
   const [preCountDown, setPreCountDown] = useState("");
   const [countDownStart, setCountDownStart] = useState(false);
+  const [display, setDisplay] = useState(null);
 
+  /*countdown timer*/
   useEffect(() => {
     let interval = null;
 
@@ -33,6 +34,19 @@ function App() {
     }
     return () => clearInterval(interval);
   }, [countDownStart, countDown, preCountDown]);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (countDownStart && preCountDown === 0) {
+      setId(getRandomSquare().id);
+      interval = setInterval(() => {
+        setId(getRandomSquare().id);
+      }, 5000);
+    }
+
+    return () => clearInterval(interval);
+  }, [countDownStart, preCountDown]);
 
   /*start timer function*/
   const handleStart = () => {

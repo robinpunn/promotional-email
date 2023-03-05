@@ -13,9 +13,14 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.board-container {
+  width: 1000%;
+}
+
 .other-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  width: 35%;
 }

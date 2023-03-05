@@ -43,7 +43,7 @@ function ChessBoard({ setBoard, preCountDown, id }) {
         ))}
       </tbody>
       {preCountDown > 0 && <PreCount time={preCountDown} />}
-      <RandomSquare id={id} />
+      <RandomSquare className="random" id={id} />
     </table>
   );
 }
