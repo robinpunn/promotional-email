@@ -11,7 +11,9 @@ function App() {
   const [countDown, setCountDown] = useState("0:00");
   const [preCountDown, setPreCountDown] = useState("");
   const [countDownStart, setCountDownStart] = useState(false);
-  const [display, setDisplay] = useState(null);
+  const [select, setSelect] = useState(null);
+  const [history, setHistory] = useState([]);
+  const [choiceHx, setChoiceHx] = useState([]);
 
   /*countdown timer*/
   useEffect(() => {
@@ -36,16 +38,9 @@ function App() {
   }, [countDownStart, countDown, preCountDown]);
 
   useEffect(() => {
-    let interval = null;
-
     if (countDownStart && preCountDown === 0) {
       setId(getRandomSquare().id);
-      interval = setInterval(() => {
-        setId(getRandomSquare().id);
-      }, 5000);
     }
-
-    return () => clearInterval(interval);
   }, [countDownStart, preCountDown]);
 
   /*start timer function*/
@@ -53,12 +48,31 @@ function App() {
     setCountDownStart(true);
     setPreCountDown(3);
     setCountDown(30);
+    setSelect(null);
+    setHistory([]);
+    setChoiceHx([]);
+    setId(null);
+  };
+
+  /*select square*/
+  const handleChoice = (e) => {
+    if (countDownStart && preCountDown === 0) {
+      console.log(e.target.id, history, choiceHx);
+      setSelect(e.target.id);
+      setHistory([...history, e.target.id]);
+      setChoiceHx([...choiceHx, e.target.id]);
+    }
   };
 
   return (
     <div className="App">
       <div className="board-container">
-        <ChessBoard setBoard={setBoard} preCountDown={preCountDown} id={id} />
+        <ChessBoard
+          setBoard={setBoard}
+          preCountDown={preCountDown}
+          id={id}
+          handleChoice={handleChoice}
+        />
       </div>
       <div className="other-container">
         <Timer time={countDown} />

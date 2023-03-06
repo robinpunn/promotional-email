@@ -50,6 +50,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  animation-name: fade-in-out;
+  animation-duration: 2s;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media screen and (min-width: 40rem) {

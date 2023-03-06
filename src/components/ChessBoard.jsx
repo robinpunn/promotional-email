@@ -3,7 +3,7 @@ import PreCount from "./PreCount";
 import RandomSquare from "./RandomSquare";
 import "./ChessBoard.css";
 
-function ChessBoard({ setBoard, preCountDown, id }) {
+function ChessBoard({ setBoard, preCountDown, id, handleChoice }) {
   const boardRef = useRef(null);
 
   useEffect(() => {
@@ -23,20 +23,40 @@ function ChessBoard({ setBoard, preCountDown, id }) {
               const isLetterCell = i === 7 && j !== 0;
               const isNumberCell = j === 0 && i !== 7;
               return isLetterCell ? (
-                <td key={id} id={id} className={className}>
+                <td
+                  key={id}
+                  id={id}
+                  className={className}
+                  onClick={handleChoice}
+                >
                   <p className="letter">{letter}</p>
                 </td>
               ) : isNumberCell ? (
-                <td key={id} id={id} className={className}>
+                <td
+                  key={id}
+                  id={id}
+                  className={className}
+                  onClick={handleChoice}
+                >
                   <p className="number">{number}</p>
                 </td>
               ) : i === 7 && j === 0 ? (
-                <td key={id} id={id} className={className}>
+                <td
+                  key={id}
+                  id={id}
+                  className={className}
+                  onClick={handleChoice}
+                >
                   <p className="letter">{letter}</p>
                   <p className="number">{number}</p>
                 </td>
               ) : (
-                <td key={id} id={id} className={className}></td>
+                <td
+                  key={id}
+                  id={id}
+                  className={className}
+                  onClick={handleChoice}
+                ></td>
               );
             })}
           </tr>
