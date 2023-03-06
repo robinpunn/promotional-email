@@ -57,12 +57,14 @@
 @keyframes fade-in-out {
   0% {
     opacity: 1;
+    transform: translateY(0);
   }
   50% {
     opacity: 0.5;
   }
   100% {
     opacity: 0;
+    transform: translateY(-100%);
   }
 }
 

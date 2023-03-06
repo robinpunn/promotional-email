@@ -4,6 +4,9 @@ import { getRandomSquare } from "./services/random";
 import Start from "./components/Start";
 import "./App.css";
 import Timer from "./components/Timer";
+import Score from "./components/Score";
+import CurrentSquare from "./components/CurrentSquare";
+import History from "./components/History";
 
 function App() {
   const [board, setBoard] = useState(null);
@@ -11,9 +14,9 @@ function App() {
   const [countDown, setCountDown] = useState("0:00");
   const [preCountDown, setPreCountDown] = useState("");
   const [countDownStart, setCountDownStart] = useState(false);
-  const [select, setSelect] = useState(null);
   const [history, setHistory] = useState([]);
   const [choiceHx, setChoiceHx] = useState([]);
+  const [score, setScore] = useState(0);
 
   /*countdown timer*/
   useEffect(() => {
@@ -45,10 +48,10 @@ function App() {
 
   /*start timer function*/
   const handleStart = () => {
+    setScore(0);
     setCountDownStart(true);
     setPreCountDown(3);
     setCountDown(30);
-    setSelect(null);
     setHistory([]);
     setChoiceHx([]);
     setId(null);
@@ -56,11 +59,29 @@ function App() {
 
   /*select square*/
   const handleChoice = (e) => {
+    let choice = e.target.id;
+    // setSelect(choice);
     if (countDownStart && preCountDown === 0) {
-      console.log(e.target.id, history, choiceHx);
-      setSelect(e.target.id);
-      setHistory([...history, e.target.id]);
-      setChoiceHx([...choiceHx, e.target.id]);
+      if (choice === id) {
+        setChoiceHx([...choiceHx, choice]);
+        setHistory([...history, id]);
+        setScore(score + 1);
+        setId(getRandomSquare().id);
+      } else {
+        setChoiceHx([...choiceHx, choice]);
+        setHistory([...history, id]);
+        setId(getRandomSquare().id);
+      }
+      console.log(
+        "score:",
+        score,
+        "id:",
+        id,
+        "history:",
+        history,
+        "choice:",
+        choiceHx
+      );
     }
   };
 
@@ -75,7 +96,10 @@ function App() {
         />
       </div>
       <div className="other-container">
+        <CurrentSquare id={id} />
+        <History history={history} choice={choiceHx} />
         <Timer time={countDown} />
+        <Score score={score} history={history} />
         <Start handleStart={handleStart} disabled={countDownStart} />
       </div>
     </div>
