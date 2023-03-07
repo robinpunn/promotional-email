@@ -1,8 +1,8 @@
 import React from "react";
 
-function RandomSquare({ id }) {
+function RandomSquare({ id, visible }) {
   return (
-    <tbody className="random" style={{ color: "white", fontSize: "3rem" }}>
+    <tbody className={`random${visible ? "" : " fade-out"}`}>
       <tr>
         <td>{id}</td>
       </tr>

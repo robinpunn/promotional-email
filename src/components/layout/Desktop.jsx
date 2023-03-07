@@ -18,6 +18,7 @@ function Desktop({
   score,
   handleStart,
   countDownStart,
+  highScore,
 }) {
   return (
     <div className="desktop">
@@ -35,6 +36,7 @@ function Desktop({
         <Timer time={countDown} />
         <Score score={score} history={history} />
         <Start handleStart={handleStart} disabled={countDownStart} />
+        <HighScore highScore={highScore} />
       </div>
     </div>
   );

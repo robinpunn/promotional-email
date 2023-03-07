@@ -3,7 +3,7 @@ import PreCount from "./PreCount";
 import RandomSquare from "./RandomSquare";
 import "./ChessBoard.css";
 
-function ChessBoard({ setBoard, preCountDown, id, handleChoice }) {
+function ChessBoard({ setBoard, preCountDown, id, handleChoice, visible }) {
   const boardRef = useRef(null);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function ChessBoard({ setBoard, preCountDown, id, handleChoice }) {
         ))}
       </tbody>
       {preCountDown > 0 && <PreCount time={preCountDown} />}
-      <RandomSquare className="random" id={id} />
+      <RandomSquare id={id} visible={visible} />
     </table>
   );
 }

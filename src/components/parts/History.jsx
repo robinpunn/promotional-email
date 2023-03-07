@@ -8,10 +8,12 @@ function History({ history, choice }) {
         const symbol = isCorrect ? "✓" : "✕";
         const color = isCorrect ? "green" : "red";
         return (
-          <p style={{ color }} key={index}>
-            <span style={{ color }}>{symbol} </span>
-            {item}
-          </p>
+          <div className="history" key={index}>
+            <p style={{ color }}>
+              <span style={{ color }}>{symbol} </span>
+              {item}
+            </p>
+          </div>
         );
       })}
     </div>
