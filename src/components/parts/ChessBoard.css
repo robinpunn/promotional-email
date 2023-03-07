@@ -1,6 +1,6 @@
 .board {
   position: relative;
-  box-shadow: 0 0 0.5rem 0.1rem #5f5d5d;
+  box-shadow: 0px 0px 10px rgba(127, 124, 124, 0.5);
 }
 
 .white {

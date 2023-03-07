@@ -6,7 +6,7 @@ import Timer from "../parts/Timer";
 import Score from "../parts/Score";
 import Start from "../parts/Start";
 import HighScore from "../parts/HighScore";
-import { GiWarlockEye } from "react-icons/gi";
+import { GiEyeTarget } from "react-icons/gi";
 import "./Mobile.css";
 
 function Mobile({
@@ -27,11 +27,7 @@ function Mobile({
     <div className="mobile">
       <div className="current-history">
         <History history={history} choice={choiceHx} />
-        {!countDown ? (
-          <GiWarlockEye color="white" />
-        ) : (
-          <CurrentSquare id={id} />
-        )}
+        <CurrentSquare id={id} countDown={countDown} />
       </div>
       <div className="board-container">
         <ChessBoard
