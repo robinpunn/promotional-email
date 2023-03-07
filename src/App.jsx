@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
-import ChessBoard from "./components/ChessBoard";
 import { getRandomSquare } from "./services/random";
-import Start from "./components/Start";
 import "./App.css";
-import Timer from "./components/Timer";
-import Score from "./components/Score";
-import CurrentSquare from "./components/CurrentSquare";
-import History from "./components/History";
+import Desktop from "./components/Layout/Desktop";
 
 function App() {
   const [board, setBoard] = useState(null);
@@ -72,36 +67,23 @@ function App() {
         setHistory([...history, id]);
         setId(getRandomSquare().id);
       }
-      console.log(
-        "score:",
-        score,
-        "id:",
-        id,
-        "history:",
-        history,
-        "choice:",
-        choiceHx
-      );
     }
   };
 
   return (
     <div className="App">
-      <div className="board-container">
-        <ChessBoard
-          setBoard={setBoard}
-          preCountDown={preCountDown}
-          id={id}
-          handleChoice={handleChoice}
-        />
-      </div>
-      <div className="other-container">
-        <CurrentSquare id={id} />
-        <History history={history} choice={choiceHx} />
-        <Timer time={countDown} />
-        <Score score={score} history={history} />
-        <Start handleStart={handleStart} disabled={countDownStart} />
-      </div>
+      <Desktop
+        setBoard={setBoard}
+        preCountDown={preCountDown}
+        id={id}
+        handleChoice={handleChoice}
+        history={history}
+        choiceHx={choiceHx}
+        countDown={countDown}
+        score={score}
+        handleStart={handleStart}
+        countDownStart={countDownStart}
+      />
     </div>
   );
 }

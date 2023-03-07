@@ -1,0 +1,43 @@
+.desktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+.board-container {
+  position: relative;
+  right: 20%;
+  width: 80%;
+}
+
+.other-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 15rem;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.current-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid black;
+}
