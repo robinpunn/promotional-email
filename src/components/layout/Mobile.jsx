@@ -6,7 +6,7 @@ import Timer from "../parts/Timer";
 import Score from "../parts/Score";
 import Start from "../parts/Start";
 import HighScore from "../parts/HighScore";
-import { GiEyeTarget } from "react-icons/gi";
+import Modal from "../modal/Modal";
 import "./Mobile.css";
 
 function Mobile({
@@ -22,9 +22,19 @@ function Mobile({
   countDownStart,
   visible,
   highScore,
+  showModal,
+  setShowModal,
 }) {
   return (
     <div className="mobile">
+      {showModal && (
+        <Modal
+          score={score}
+          highScore={highScore}
+          handleStart={handleStart}
+          setShowModal={setShowModal}
+        />
+      )}
       <div className="current-history">
         <History history={history} choice={choiceHx} />
         <CurrentSquare id={id} countDown={countDown} />

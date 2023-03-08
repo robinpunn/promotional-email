@@ -14,6 +14,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [visible, setVisible] = useState(false);
   const [highScore, setHighScore] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   /*countdown timer*/
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         }, 1000);
       } else {
         setCountDownStart(false);
+        setCountDown("0:00");
       }
     } else {
       clearInterval(interval);
@@ -62,6 +64,13 @@ function App() {
     }
   }, [id]);
 
+  /*show modal at end of game*/
+  useEffect(() => {
+    if (countDown === 0) {
+      setShowModal(true); // set showModal to true when countdown reaches zero
+    }
+  }, [countDown]);
+
   /*random square*/
   const getRandomSquare = () => {
     const randomIndex = Math.floor(Math.random() * 64);
@@ -73,6 +82,7 @@ function App() {
 
   /*start timer function*/
   const handleStart = () => {
+    setShowModal(false);
     setScore(0);
     setCountDownStart(true);
     setPreCountDown(3);
@@ -132,6 +142,7 @@ function App() {
         countDownStart={countDownStart}
         visible={visible}
         highScore={highScore}
+        showModal={showModal}
   />*/}
       {
         <Mobile
@@ -147,6 +158,8 @@ function App() {
           countDownStart={countDownStart}
           visible={visible}
           highScore={highScore}
+          showModal={showModal}
+          setShowModal={setShowModal}
         />
       }
     </div>
