@@ -1,11 +1,14 @@
 {
   "name": "react-chess-vision",
   "private": true,
+  "homepage": "https://robinpunn.github.io/react-chess/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
