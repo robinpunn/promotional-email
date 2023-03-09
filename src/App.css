@@ -3,10 +3,269 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  position: relative;
 }
 
 .App {
   font-family: 'Roboto', sans-serif;
   position: relative;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+.desktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
   width: 100%;
 }
+
+.current-history {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.current {
+  color: white;
+  font: 2rem;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2.5rem;
+  width: 15rem;
+  background: #333;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  font-size: 0.8rem;
+  box-shadow: 0px 0px 10px rgba(127, 124, 124, 0.5);
+}
+
+.history {
+  margin: 0 0.5rem;
+}
+
+.current-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.board-container {
+  position: relative;
+  margin: 0;
+}
+
+.other-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0.75rem 0 0 0;
+}
+
+.score {
+  margin: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-style: bold;
+}
+
+.high-score {
+  margin: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.start-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.time {
+  margin: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.time-icon {
+  margin-right: 0.5rem;
+}
+.start {
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 60rem) {
+  .App {
+    width: 100%;
+  }
+
+  .desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+  }
+
+  .desktop-scores {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem;
+    width: 15rem;
+  }
+
+  .other-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+  }
+
+  .time {
+    margin: 1rem;
+  }
+
+  .history-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid black;
+    overflow-y: scroll;
+  }
+
+  .history-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .history {
+    font-size: 1.25rem;
+  }
+
+  .current-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .start {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 32rem) {
+  .current-history {
+    margin: 2rem;
+  }
+  .current {
+    color: white;
+    font: 2rem;
+  }
+
+  .history-container {
+    margin: 1rem;
+  }
+
+  .current-container {
+    margin: 1rem;
+  }
+  .other-container {
+    margin: 1.5rem;
+  }
+}
+
+/* @media screen and (min-width: 40rem) {
+  .white {
+    width: 50px;
+    height: 50px;
+    font-size: 0.75rem;
+  }
+
+  .green {
+    width: 50px;
+    height: 50px;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  .white {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+
+  .green {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 70rem) {
+  .white {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
+  }
+
+  .green {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 20rem) {
+  .white {
+    width: 30px;
+    height: 30px;
+    font-size: 0.5rem;
+  }
+
+  .green {
+    width: 30px;
+    height: 30px;
+    font-size: 0.5rem;
+  }
+} */

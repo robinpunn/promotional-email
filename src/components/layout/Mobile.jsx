@@ -7,7 +7,6 @@ import Score from "../parts/Score";
 import Start from "../parts/Start";
 import HighScore from "../parts/HighScore";
 import Modal from "../modal/Modal";
-import "./Mobile.css";
 
 function Mobile({
   setBoard,

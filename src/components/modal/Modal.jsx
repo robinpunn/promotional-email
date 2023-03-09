@@ -5,10 +5,7 @@ import "./Modal.css";
 function Modal({ score, highScore, handleStart, setShowModal }) {
   return (
     <div className="modal-container">
-      <h3
-        style={{ color: "white", margin: 0 }}
-        onClick={() => setShowModal(false)}
-      >
+      <h3 className="modal-close" onClick={() => setShowModal(false)}>
         X
       </h3>
       <h1 className="modal-title">Game Over</h1>

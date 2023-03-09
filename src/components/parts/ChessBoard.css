@@ -5,16 +5,16 @@
 
 .white {
   background-color: #bbb;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   font-size: 0.6rem;
   position: relative;
 }
 
 .green {
   background-color: #4a1;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   font-size: 0.6rem;
   position: relative;
 }
@@ -63,15 +63,47 @@
 
 @media screen and (min-width: 40rem) {
   .white {
-    width: 80x;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     font-size: 0.75rem;
+  }
+
+  .green {
+    width: 50px;
+    height: 50px;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  .white {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+
+  .green {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 70rem) {
+  .board {
+    margin: 1rem 10rem 1rem 0;
+  }
+
+  .white {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
   }
 
   .green {
     width: 80px;
     height: 80px;
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 }
 

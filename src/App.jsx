@@ -15,6 +15,14 @@ function App() {
   const [visible, setVisible] = useState(false);
   const [highScore, setHighScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  /*check window size*/
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   /*countdown timer*/
   useEffect(() => {
@@ -129,22 +137,24 @@ function App() {
 
   return (
     <div className="App">
-      {/*<Desktop
-        setBoard={setBoard}
-        preCountDown={preCountDown}
-        id={id}
-        handleChoice={handleChoice}
-        history={history}
-        choiceHx={choiceHx}
-        countDown={countDown}
-        score={score}
-        handleStart={handleStart}
-        countDownStart={countDownStart}
-        visible={visible}
-        highScore={highScore}
-        showModal={showModal}
-  />*/}
-      {
+      {width >= 960 ? (
+        <Desktop
+          setBoard={setBoard}
+          preCountDown={preCountDown}
+          id={id}
+          handleChoice={handleChoice}
+          history={history}
+          choiceHx={choiceHx}
+          countDown={countDown}
+          score={score}
+          handleStart={handleStart}
+          countDownStart={countDownStart}
+          visible={visible}
+          highScore={highScore}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : (
         <Mobile
           setBoard={setBoard}
           preCountDown={preCountDown}
@@ -161,7 +171,7 @@ function App() {
           showModal={showModal}
           setShowModal={setShowModal}
         />
-      }
+      )}
     </div>
   );
 }
