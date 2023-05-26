@@ -89,6 +89,10 @@
   align-items: flex-start;
   justify-content: center;
   margin: 0.75rem 0 0 0;
+  box-shadow: 0 0 10px rgba(127, 124, 124),
+  0 0 25px rgba(127, 124, 124),
+  0 0 50px rgba(127, 124, 124),
+  0 0 100px rgba(127, 124, 124);
 }
 
 .score {
@@ -121,6 +125,7 @@
 .time-icon {
   margin-right: 0.5rem;
 }
+
 .start {
   margin-top: 0.5rem;
 }
