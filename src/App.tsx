@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import Desktop from "./components/Layout/Desktop";
-import Mobile from "./components/Layout/Mobile";
+import Desktop from "./components/layout/Desktop";
+import Mobile from "./components/layout/Mobile";
 
 function App() {
   const [board, setBoard] = useState(null);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState<string | null>(null);
   const [countDown, setCountDown] = useState("0:00");
   const [preCountDown, setPreCountDown] = useState("");
   const [countDownStart, setCountDownStart] = useState(false);
-  const [history, setHistory] = useState([]);
-  const [choiceHx, setChoiceHx] = useState([]);
+  const [history, setHistory] = useState<any[]>([]);
+  const [choiceHx, setChoiceHx] = useState<any[]>([]);
   const [score, setScore] = useState(0);
   const [visible, setVisible] = useState(false);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -26,16 +26,16 @@ function App() {
 
   /*countdown timer*/
   useEffect(() => {
-    let interval = null;
+    let interval: number | undefined;
 
     if (countDownStart) {
-      if (preCountDown > 0) {
+      if (parseInt(preCountDown, 10) > 0) {
         interval = setInterval(() => {
-          setPreCountDown((preCountDown) => preCountDown - 1);
+          setPreCountDown((preCountDown) => (parseInt(preCountDown, 10) - 1).toString());
         }, 1000);
-      } else if (countDown > 0) {
+      } else if (parseInt(countDown, 10) > 0) {
         interval = setInterval(() => {
-          setCountDown((countDown) => countDown - 1);
+          setCountDown((countDown) => (parseInt(countDown, 10) - 1).toString());
         }, 1000);
       } else {
         setCountDownStart(false);
@@ -48,7 +48,7 @@ function App() {
   }, [countDownStart, countDown, preCountDown]);
 
   useEffect(() => {
-    if (countDownStart && preCountDown === 0) {
+    if (countDownStart && parseInt(preCountDown, 10) === 0) {
       setId(getRandomSquare().id);
     }
   }, [countDownStart, preCountDown]);
@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     const storedHighScore = localStorage.getItem("highScore");
     if (storedHighScore) {
-      setHighScore(parseFloat(storedHighScore));
+      setHighScore(storedHighScore);
     }
   }, []);
 
@@ -74,7 +74,7 @@ function App() {
 
   /*show modal at end of game*/
   useEffect(() => {
-    if (countDown === 0) {
+    if (parseInt(countDown, 10) === 0) {
       setShowModal(true); // set showModal to true when countdown reaches zero
     }
   }, [countDown]);
@@ -93,17 +93,17 @@ function App() {
     setShowModal(false);
     setScore(0);
     setCountDownStart(true);
-    setPreCountDown(3);
-    setCountDown(30);
+    setPreCountDown("3");
+    setCountDown("30");
     setHistory([]);
     setChoiceHx([]);
     setId(null);
   };
 
   /*select square*/
-  const handleChoice = (e) => {
-    let choice = e.target.id;
-    if (countDownStart && preCountDown === 0) {
+  const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
+    let choice = (e.currentTarget as HTMLButtonElement).id;
+    if (countDownStart && parseInt(preCountDown, 10) === 0) {
       if (choice === id) {
         setChoiceHx([...choiceHx, choice]);
         setHistory([...history, id]);
@@ -119,11 +119,11 @@ function App() {
   };
 
   /*save high score*/
-  const saveHighScore = (score, total) => {
+  const saveHighScore = (score: number, total:number) => {
     const highScoreString = localStorage.getItem("highScore");
     if (highScoreString) {
       const [prevScore, prevTotal] = highScoreString.split("/");
-      if (score > prevScore || (score === prevScore && total < prevTotal)) {
+      if (score > parseInt(prevScore, 10) || (score === parseInt(prevScore, 10) && total < parseInt(prevScore, 10))) {
         const newHighScore = `${score}/${total}`;
         setHighScore(newHighScore);
         localStorage.setItem("highScore", newHighScore);
