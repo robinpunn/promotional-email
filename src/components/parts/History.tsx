@@ -1,6 +1,12 @@
 import React from "react";
+import HighScore from "./HighScore";
 
-function History({ history, choice }) {
+interface History {
+  history: string[];
+  choice: string[];
+}
+
+const History: React.FC<History> = ({ history, choice }) => {
   return (
     <div className="history-container">
       {history.map((item, index) => {

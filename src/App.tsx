@@ -74,10 +74,10 @@ function App() {
 
   /*show modal at end of game*/
   useEffect(() => {
-    if (parseInt(countDown, 10) === 0) {
+    if (countDownStart && parseInt(countDown, 10) === 0) {
       setShowModal(true); // set showModal to true when countdown reaches zero
     }
-  }, [countDown]);
+  }, [countDown, countDownStart]);
 
   /*random square*/
   const getRandomSquare = () => {
@@ -101,8 +101,8 @@ function App() {
   };
 
   /*select square*/
-  const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
-    let choice = (e.currentTarget as HTMLButtonElement).id;
+  const handleChoice = (e: React.MouseEvent<HTMLTableCellElement>) => {
+    let choice = e.currentTarget.id;
     if (countDownStart && parseInt(preCountDown, 10) === 0) {
       if (choice === id) {
         setChoiceHx([...choiceHx, choice]);

@@ -8,7 +8,24 @@ import Start from "../parts/Start";
 import HighScore from "../parts/HighScore";
 import Modal from "../modal/Modal";
 
-function Mobile({
+interface MobileProps {
+  setBoard: (board: any) => void;
+  preCountDown: string;
+  id: string | null;
+  handleChoice: React.MouseEventHandler<HTMLTableCellElement>;
+  history: string[];
+  choiceHx: string[];
+  countDown: string;
+  score: number;
+  handleStart: () => void;
+  visible: boolean;
+  countDownStart: boolean;
+  highScore: string;
+  showModal: boolean;
+  setShowModal: (showModal: boolean) => void;
+}
+
+const Mobile: React.FC<MobileProps> = ({
   setBoard,
   preCountDown,
   id,
@@ -23,7 +40,7 @@ function Mobile({
   highScore,
   showModal,
   setShowModal,
-}) {
+}) => {
   return (
     <div className="mobile">
       {showModal && (

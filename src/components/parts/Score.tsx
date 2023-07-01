@@ -1,7 +1,12 @@
 import React from "react";
 import { BsBullseye } from "react-icons/bs";
 
-function Score({ score, history }) {
+interface Score {
+  score: number;
+  history: string[];
+}
+
+const Score: React.FC<Score> = ({ score, history }) => {
   return (
     <>
       <p className="score">

@@ -3,7 +3,16 @@ import PreCount from "./PreCount";
 import RandomSquare from "./RandomSquare";
 import "./ChessBoard.css";
 
-function ChessBoard({ setBoard, preCountDown, id, handleChoice, visible }) {
+interface ChessBoardProps {
+  setBoard: (board: any) => void;
+  preCountDown: string;
+  id: string | null;
+  handleChoice: React.MouseEventHandler<HTMLTableCellElement>;
+  visible: boolean;
+  countDownStart?: boolean;
+}
+
+const ChessBoard: React.FC<ChessBoardProps> = ({ setBoard, preCountDown, id, handleChoice, visible }) => {
   const boardRef = useRef(null);
 
   useEffect(() => {
@@ -62,7 +71,7 @@ function ChessBoard({ setBoard, preCountDown, id, handleChoice, visible }) {
           </tr>
         ))}
       </tbody>
-      {preCountDown > 0 && <PreCount time={preCountDown} />}
+      {parseInt(preCountDown) > 0 && <PreCount time={preCountDown} />}
       <RandomSquare id={id} visible={visible} />
     </table>
   );

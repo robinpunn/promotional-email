@@ -1,6 +1,12 @@
 import React from "react";
 
-function Start({ handleStart, disabled }) {
+interface StartProps {
+  handleStart: () => void;
+  disabled?: boolean;
+  className?: string
+}
+
+const Start: React.FC<StartProps> = ({ handleStart, disabled }) => {
   return (
     <button className="start" onClick={handleStart} disabled={disabled}>
       Start Game

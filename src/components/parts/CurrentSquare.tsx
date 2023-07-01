@@ -1,10 +1,15 @@
 import React from "react";
 import { GiEyeTarget } from "react-icons/gi";
 
-function CurrentSquare({ id, countDown }) {
+interface CurrentProps {
+  id: string | null;
+  countDown: string;
+}
+
+const CurrentSquare: React.FC<CurrentProps> = ({ id, countDown }) => {
   return (
     <div className="current-container">
-      {countDown > 0 ? (
+      {parseInt(countDown) > 0 ? (
         <p className="current" style={{ color: "white", fontSize: "2rem" }}>
           {id}
         </p>
